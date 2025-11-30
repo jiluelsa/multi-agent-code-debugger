@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Agent Code Debugger</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="hero">
+        <h1 class="title">⚡ Multi-Agent Code Debugger</h1>
+        <p class="subtitle">AI-powered debugging • Refactoring • Auto-Testing</p>
+    </div>
+
+    <div class="container fade-in">
+
+        <form method="POST" enctype="multipart/form-data" class="input-section glass">
+
+            <h2 class="section-title">📥 Input Code</h2>
+
+            <div class="file-upload">
+                <label class="label">Upload Python File</label>
+                <input type="file" name="file" accept=".py">
+            </div>
+
+            <div class="textbox-wrapper">
+                <label class="label">Or Paste Python Code</label>
+                <textarea name="code" class="textbox" placeholder="Write or paste your Python code here...">{{ input_code }}</textarea>
+            </div>
+
+            <button type="submit" class="btn pulse">Run Debugger</button>
+        </form>
+
+        {% if output %}
+        <div class="results">
+
+            <div class="card fade-up">
+                <h2>🧠 AI Analysis</h2>
+                <pre class="code-block">{{ output.analysis | default("No analysis") | tojson(indent=2) }}</pre>
+            </div>
+
+            <div class="card fade-up">
+                <h2>🐞 Bugs Found</h2>
+                <pre class="code-block">{{ output.bugs | default([]) | tojson(indent=2) }}</pre>
+            </div>
+
+            <div class="card fade-up">
+                <h2>🛠 Refactored Code</h2>
+                <pre class="code-block">{{ output.refactored_code | default("No refactored code generated") }}</pre>
+            </div>
+
+            <div class="card fade-up">
+                <h2>✔ Test Results</h2>
+                <pre class="code-block">{{ output.test_results | default([]) | tojson(indent=2) }}</pre>
+            </div>
+
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+google-generativeai
+pytest
+python-dotenv
+requests
+deepdiff
+tiktoken
