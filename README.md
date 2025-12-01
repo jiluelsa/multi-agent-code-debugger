@@ -53,53 +53,7 @@ A higher-level agent that coordinates multiple rounds of improvement until code 
 
 🏗️ Architecture Diagram
 
-                              ┌───────────────────────┐
-                    │      User / UI        │
-                    │  (Flask Web Frontend) │
-                    └─────────┬─────────────┘
-                              │
-                              ▼
-                     ┌─────────────────┐
-                     │  run_pipeline   │
-                     │  Orchestrator   │
-                     └─────────┬───────┘
-                               │
-         ┌─────────────────────┴─────────────────────┐
-         │                                             │
-         ▼                                             ▼
-┌─────────────────┐                          ┌─────────────────┐
-│ Code Analyzer   │                          │  Bug Finder     │
-│ - Summarizes    │                          │ - Detects       │
-│   structure     │                          │   bugs          │
-│ - Finds issues  │                          │ - Debug prints  │
-└─────────┬───────┘                          └─────────┬───────┘
-          │                                              │
-          └───────────────┐      ┌──────────────────────┘
-                          ▼      ▼
-                     ┌─────────────────┐
-                     │ Refactor Agent  │
-                     │ - Removes debug │
-                     │   prints        │
-                     │ - Fixes bugs    │
-                     │ - Cleans code   │
-                     └─────────┬───────┘
-                               │
-                               ▼
-                     ┌─────────────────┐
-                     │ Test Runner     │
-                     │ - Runs pytest   │
-                     │ - Reports pass/ │
-                     │   fail results │
-                     └─────────┬───────┘
-                               │
-                               ▼
-                    ┌───────────────────────┐
-                    │ Results Sent to UI     │
-                    │ - Analysis            │
-                    │ - Bugs Found          │
-                    │ - Refactored Code     │
-                    │ - Test Results        │
-                    └───────────────────────┘
+screenshots/architecture.png                     
 
 
 🧩 Features Implemented for the AI Agents Capstone
@@ -147,30 +101,7 @@ User can:
 
 📁 Project Structure
 
-multi-agent-code-debugger/
-│
-├── app.py # Flask web server
-├── run_pipeline.py # Agent orchestration for UI
-│
-├── agents/
-│ ├── code_analyzer.py
-│ ├── bug_finder.py
-│ ├── refactor_agent.py
-│ ├── test_runner.py
-│ ├── orchestrator.py
-│
-├── utils/
-│ ├── file_manager.py
-│ ├── logger.py
-│
-├── templates/
-│ └── index.html # Web UI
-│
-├── static/
-│ └── styles.css # Styling and animations
-│
-└── README.md
-
+screenshots/projectstructure.png
 
 ---
 
@@ -211,7 +142,7 @@ Test results displayed
 
 # Multi-Agent Flow
 (screenshots/ui2.png)
-(screenshots/ui2.png)
+(screenshots/ui3.png)
 
 
 
